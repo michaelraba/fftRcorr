@@ -51,7 +51,7 @@ for timeBloc = 1:blocLength% time
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear qMinusQbar_noCsYet; % yes, clear this..
 %$%$    for timeBloc = 1:blocLength% time % disable; already declared above in fftAzimuth
-        saveStr=['/mnt/archLv/mike/podData/apr18/qMinusQbar[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
+        saveStr=[saveDir 'qMinusQbar[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
         load(saveStr,'qMinusQbar_noCsYet');
     ordStr="xcorrNow";
 %    if ordStr=="xcorrNow" % remove that.
@@ -67,7 +67,7 @@ clear qMinusQbar_noCsYet; % yes, clear this..
                 end % m
         end % (little)t
 
-  saveStr=['/mnt/archLv/mike/podData/apr18/xcorrDone[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
+  saveStr=[saveDir 'xcorrDone[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
    save(saveStr,'xcorrDone','-v7.3');
 
 

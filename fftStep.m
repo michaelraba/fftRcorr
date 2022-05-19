@@ -36,7 +36,7 @@ if stepStr=="readDataAndFindVeloFluctuation"
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     for timeBloc=1:blocLength
-    for t = 1:ntimesteps % time
+    parfor t = 1:ntimesteps % time
 % load in time bloc again
         myPreFft_noCsNoTimeYet=readCircles2(timeBloc*t,c);
         myPreFft_noCsYet(t).circle=myPreFft_noCsNoTimeYet;
@@ -45,7 +45,7 @@ if stepStr=="readDataAndFindVeloFluctuation"
     end % parfor t
     % this should be saved to disk immediately, for each timeBloc...
         sprintf('%s','saving qMinusQbar...')
-        saveStr=['/mnt/archLv/mike/podData/apr18/qMinusQbar[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(c) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
+        saveStr=[saveDir 'qMinusQbar[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(c) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
         save(saveStr,'qMinusQbar_noCsYet','-v7.3');
         sprintf('%s%s','Saved velocity fluctuations into file ',saveStr);
 
@@ -69,7 +69,7 @@ if stepStr=="readDataAndFindVeloFluctuation"
 % read in one of the saved xcorrDone
 for timeBloc=1:blocLength
 for currentCrossSec=1:ncs
-saveStr=['/mnt/archLv/mike/podData/apr18/xcorrDone[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
+saveStr=[saveDir '/xcorrDone[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
 qq=open(saveStr);
 sprintf('%s','start azimuthal')
 % now re-organize:
@@ -101,7 +101,7 @@ end % m
 end % r
 end % t (little)
         sprintf('%s','saving xdirPostFft...')
-        saveStr=['/mnt/archLv/mike/podData/apr18/xdirPostFft[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(c) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
+        saveStr=[saveDir 'xdirPostFft[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(c) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
         save(saveStr,'xdirPostFft','-v7.3');
         sprintf('%s%s','Saved xdirpostfft into file ',saveStr);
 
@@ -136,7 +136,7 @@ end % timeBloc
 
 % set back in radial direction and time avergae for all timesteps!
 
-        saveStr=['/mnt/archLv/mike/podData/apr18/avgTimeEnd[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(c) '.mat'];
+        saveStr=[saveDir '/avgTimeEnd[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(c) '.mat'];
         save(saveStr,'avgTimeEnd','-v7.3');
 
 
