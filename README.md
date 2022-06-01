@@ -15,6 +15,5 @@
 
 ## Things to Try (if desperation sets in..)
 
-
-### Do fft in $x$ direction, then correlation and finally take fourier in $\theta$.
+-   Do fft in $x$ direction, then correlation and finally take fourier in $\theta$.
 
