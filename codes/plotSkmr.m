@@ -3,7 +3,7 @@ function plotSkmr(plotObject,isGraph)
 if isGraph=="graph"
   f=figure('Renderer', 'painters', 'Position', [10 10 1900 900])
   cMaxx=10
-  A=linspace(0,1,541)
+  A=linspace(0,1,540)
   %A=linspace(0,1,1079)
   xlabel('radius $\frac{r}{R}$','interpreter','latex')
   ylabel("$S_{ii}(k,m;r,r')$",'interpreter','latex')  
@@ -13,16 +13,20 @@ if isGraph=="graph"
   hold on;
   cou = 1
   for c=1:cMaxx
-      subplot(cMaxx,1,cou);
+      subplot(3,1,cou);
 
       %for t=1:ntimesteps
       for m=1:18
       
       labelStr = ['(m,k)=(', num2str(azimuthalSet(m)),',',num2str(c),')'];
-      pp=plot(A,real(plotObject(c).circle(m).dat((end-1)/2:end) )/ntimesteps,"DisplayName",labelStr);
+      %pp=plot(A,real(plotObject(c).circle(m).dat((end-1)/2:end) )/ntimesteps,"DisplayName",labelStr);
+      pp=plot(A,real(plotObject(c).circle(m).dat )/ntimesteps,"DisplayName",labelStr);
+
       tiSt=['Spanwise mode: ' num2str(c)  ];
       title(tiSt, 'FontName','capitana','FontSize',12,'interpreter','latex')
+      if c==1      
       legend();
+      end
       %avgTimeEnd(1).circle(1).dat  
       %pp=plot(A,real(plotObject(c).circle(m).dat /ntimesteps),"DisplayName",labelStr)
 

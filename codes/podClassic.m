@@ -5,14 +5,15 @@ function podClassic()
 %hold on;
 [ntimesteps, rMin, rMax, ss, ncs, plotOn, azimuthalSet ,azimuthalSetSize ,printStatus ,lags, blocLength, saveDir,csSet,timeSet]=constants();
 [phiVecAv]=initData2("phiVecAv");
+[eigVec]=initData2("eigVec");
+[eigVal]=initData2("eigVal");
 
 saveStr=[saveDir 'avgTimeEnd[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(ncs) '.mat'];
 qq=open(saveStr);
-for cc=1:ncs % streamwise mode % cannot exceed 1...
-        %avgTimeEnd=qq.avgTimeEnd(cc).circle; % Rmat(time).cs(cs).circle(=azimuthalSetSize1:18)
-        avgTimeEnd=qq.avgTimeEnd; % Rmat(time).cs(cs).circle(=azimuthalSetSize1:18)
+avgTimeEnd=qq.avgTimeEnd; % Rmat(time).cs(cs).circle(=azimuthalSetSize1:18)
 
         clear qq;
+for cc=1:ncs % streamwise mode % cannot exceed 1...        
 for mm=1:azimuthalSetSize % azimuthal mod
  c = avgTimeEnd(cc).circle(mm); % this is the R(k;m;t,t').
 
@@ -38,18 +39,25 @@ for mm=1:azimuthalSetSize % azimuthal mod
 sprintf('%s','take eigenvals');
 [eigVec_tmp,eigVal_tmp]=eig(ab);
 [d,ind] = sort(diag(eigVal_tmp),'descend');
-eigVal=eigVal_tmp(ind,ind);
-eigVec= eigVec_tmp(:,ind); % this needs to be stored for each m-mode.
+eigVal(mm).c(cc).dat=eigVal_tmp(ind,ind);
+eigVec(mm).c(cc).dat= eigVec_tmp(:,ind); % this needs to be stored for each m-mode.
 tTrapz=zeros(ntimesteps,1);
 %phiVec=zeros(ss,1);
 end % mm
-
-for podModeNumber=1:3
-phiVecAv(podModeNumber).circle(mm).dat = eigVec(:,podModeNumber) + phiVecAv(podModeNumber).circle(mm).dat;
-end % podMode
 end % cc
 
+%  find av over crossecs.
+for podModeNumber=1:3
+for mm=1:azimuthalSetSize
+%phiVecAv(podModeNumber).circle(mm).dat = eigVec(:,podModeNumber) + phiVecAv(podModeNumber).circle(mm).dat;
+phiVecAv(podModeNumber).circle(mm).dat = eigVec(mm).c(cc).dat(:,podModeNumber) + phiVecAv(podModeNumber).circle(mm).dat;
+end % mm
+end % podMode
 
+% call plotSkmr
+
+
+sprintf('%s','done');
 %%for podModeNumber=1:3
 %%for rr=1:ss
 %%for tt=1:ntimesteps % finding the n eigenfunctions Phi^{(n)}(r)...:

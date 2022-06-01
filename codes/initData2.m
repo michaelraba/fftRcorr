@@ -53,9 +53,13 @@ elseif initStr=="qMinusQbar"
 qq=struct('t', repmat({struct('circle', repmat({  struct('dat',repmat({zeros(1,1080)}, Nps))}, Nts)) }, Ncs));
 
 elseif initStr=="qMinusQbar_noCsYet"
-  % too many nesting here.
 qq=struct('circle', repmat({struct('dat',repmat({zeros(540,1)}, [1080,1]))} , [1,ntimesteps]));
-  %qq=struct('dat',repmat({zeros(1,1080)}, [1,540]));
+
+elseif initStr=="eigVec"
+qq=struct('c', repmat({struct('dat',repmat({zeros(540,540)}, [ncs,1]))} , [azimuthalSetSize,1]));
+elseif initStr=="eigVal"
+qq=struct('c', repmat({struct('dat',repmat({zeros(540,540)}, [ncs,1]))} , [azimuthalSetSize,1]));
+
 
 elseif initStr=="qMinusQbar_noCsNoTimeYet" % for truncating out the time when we feed eahc itme step to the azimuth fucnciton.
   qq=struct('dat',repmat({zeros(540,1)}, [1080,1]));
