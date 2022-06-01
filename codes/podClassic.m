@@ -13,6 +13,22 @@ for cc=1:ncs % streamwise mode % cannot exceed 1...
         clear qq;
 for mm=1:azimuthalSetSize % azimuthal mod
  c = avgTimeEnd(mm); % this is the R(k;m;t,t').
+
+% quickly form symmetric correlation matrix
+ for ii=1:540
+        for jj=1:540
+          if jj>= ii
+              diffNb = jj - ii;
+          corrMatSmits(m).dat(ii,jj) = c.dat(  jj - ii + 1    );
+          else
+              diffNb = ii - jj;
+          corrMatSmits(m).dat(ii,jj) = c.dat(  ii - jj + 1  );
+          end % if
+        end % jj
+        end % i
+
+
+% end correlation matrix.
 sprintf('%s','take eigenvals');
 [eigVec_tmp,eigVal_tmp]=eig(c.dat);
 [d,ind] = sort(diag(eigVal_tmp),'descend');
