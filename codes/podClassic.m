@@ -1,5 +1,5 @@
 % Snapshot POD driver function
-function pod(uXfft)
+function podClassic()
 %function pod()
 %figure(1);
 hold on;

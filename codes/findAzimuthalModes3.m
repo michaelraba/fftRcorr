@@ -1,7 +1,7 @@
 % nb this function should only take azimuthal mode ...
 function [qq]=findAzimuthalModes3(currentTime, currentCrossSec, qMinusQbar_noCsYet,xcorrDone,aliasStr)
 % [ntimesteps, rMin, rMax, ss, ncs, plotOn, azimuthalSet ,azimuthalSetSize ,printStatus ,lags]=constants();
-  [ntimesteps, rMin, rMax, ss, ncs, plotOn, azimuthalSet ,azimuthalSetSize ,printStatus ,lags, blocLength, saveDir]=constants();
+  [ntimesteps, rMin, rMax, ss, ncs, plotOn, azimuthalSet ,azimuthalSetSize ,printStatus ,lags, blocLength, saveDir,csSet,timeSet]=constants();
 
   [postAzimuthFft_noCsYet]=initData2("postAzimuthFft_noCsYet");
 

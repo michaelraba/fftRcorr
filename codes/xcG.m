@@ -13,7 +13,7 @@ for j=1:maxJ
 end
 qq(i).t= a';
 end
-[ntimesteps , rMin, rMax ,ss ,ncs ,plotOn ,azimuthalSet ,azimuthalSetSize ,printStatus ,lags, blocLength, saveDir]=constants();
+[ntimesteps , rMin, rMax ,ss ,ncs ,plotOn ,azimuthalSet ,azimuthalSetSize ,printStatus ,lags, blocLength, saveDir,csSet,timeSet]=constants();
 
 %%
 %genStr=input("(L)oad or (G)enerate? If load eg c2t4\n> ","s");
