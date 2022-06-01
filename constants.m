@@ -19,7 +19,8 @@ azimuthalSetSize=azimuthalSetSizeb(2);
 printStatus="on";
 %ntimesteps = 988; % fft mode
 ss=540;
-saveDir='/media/mi/Kahuna/podData_kahuna/may18/';
+saveDir='/mnt/interest/jun1classicPod/';
+openDir=1;
 %cMin = 1;
 %format long
 end
