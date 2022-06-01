@@ -19,10 +19,14 @@ for mm=1:azimuthalSetSize % azimuthal mod
         for jj=1:540
           if jj>= ii
               diffNb = jj - ii;
-          corrMatSmits(m).dat(ii,jj) = c.dat(  jj - ii + 1    );
+          %corrMatSmits(cc).m(mm).dat(ii,jj) = c.dat(  jj - ii + 1    );
+          ab(ii,jj) = c.dat(  jj - ii + 1    );
+
           else
               diffNb = ii - jj;
-          corrMatSmits(m).dat(ii,jj) = c.dat(  ii - jj + 1  );
+          %corrMatSmits(cc).m(mm).dat(ii,jj) = c.dat(  ii - jj + 1  );
+          ab(ii,jj) = c.dat(  ii - jj + 1  );
+
           end % if
         end % jj
         end % i
@@ -30,7 +34,7 @@ for mm=1:azimuthalSetSize % azimuthal mod
 
 % end correlation matrix.
 sprintf('%s','take eigenvals');
-[eigVec_tmp,eigVal_tmp]=eig(c.dat);
+[eigVec_tmp,eigVal_tmp]=eig(ab);
 [d,ind] = sort(diag(eigVal_tmp),'descend');
 eigVal=eigVal_tmp(ind,ind);
 eigVec= eigVec_tmp(:,ind);
