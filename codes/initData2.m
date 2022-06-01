@@ -35,6 +35,10 @@ qq=struct('RadialCircle', repmat({struct('azimuth', repmat({  struct('dat',repma
 elseif initStr=="avgTimeEnd" %redo
 qq=struct('circle', repmat({struct('dat',repmat({zeros(1079,1)}, [1,azimuthalSetSize]))} , [1,ncs]));
 
+elseif initStr=="phiVecAv" %redo
+qq=struct('circle', repmat({struct('dat',repmat({zeros(1079,1)}, [1,azimuthalSetSize]))} , [1,3])); % first 3 pod modes only
+
+
 elseif initStr=="myPreFft_noCsNoTimeYet" %redo
 qq=struct('dat', repmat({zeros(1,1080)}, [540,1]));
 

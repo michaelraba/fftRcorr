@@ -13,8 +13,6 @@ if stepStr=="readDataAndFindVeloFluctuation"
     [avgTimeEnd]=initData2("avgTimeEnd");
 
     for c = 1:ncs  % crosssection
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% Step A) load a chonk into memory and read circles in.
     for timeBloc=1:blocLength
     parfor t = 1:ntimesteps % time % <-- nb, this is the parfor loop.
@@ -22,8 +20,6 @@ if stepStr=="readDataAndFindVeloFluctuation"
     myPreFft_noCsYet(t).circle=myPreFft_noCsNoTimeYet;
     sprintf('%s','pause')
     end % parfor
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % after each block is done, find the average
     for t = 1:ntimesteps % time % <-- nb, this is the parfor loop.
       if timeBloc==blocLength && t==ntimesteps
         lastStr="last";
@@ -33,8 +29,7 @@ if stepStr=="readDataAndFindVeloFluctuation"
     [avgPreFft_noCsYet]=findQbar(t,c,myPreFft_noCsYet,avgPreFft_noCsYet,lastStr); % find temporal average.
     end % end little t
     end % timeBloc
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%
     for timeBloc=1:blocLength
     parfor t = 1:ntimesteps % time
 % load in time bloc again
@@ -52,20 +47,14 @@ if stepStr=="readDataAndFindVeloFluctuation"
     qq = qMinusQbar_noCsYet(t);
     end % timeblock
 
-    % nb time looping within..
-    %[xcorrDone]=findAzimuthalModes(c, qMinusQbar_noCsYet,xcorrDone,"alias")
     [xcorrDone]=findAzimuthalModes3(t,c, qMinusQbar_noCsYet,xcorrDone,"alias")
     sprintf('%s','start azimuthal')
     qq = xcorrDone;
 
     end %c % yes, cross-section loop should indeed end here..
-        %elseif stepStr=="azimuth"
         end % if
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%
 % x-dir fft
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % read in one of the saved xcorrDone
 for timeBloc=1:blocLength
 for currentCrossSec=1:ncs
@@ -126,29 +115,11 @@ end % if
 end % m
 end % c
 end % t (little)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 end % timeBloc
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%
-
-% set back in radial direction and time avergae for all timesteps!
-
         saveStr=[saveDir '/avgTimeEnd[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(c) '.mat'];
         save(saveStr,'avgTimeEnd','-v7.3');
 
-
-% just start coding here..
-% need radial trapz. 
-% then eigs calculation.
-
-%trapz() in r.x
-
-
-
-
+podClassic();
 qq = xdirPostFft;
         
 end % f
