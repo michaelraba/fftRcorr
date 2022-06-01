@@ -43,7 +43,7 @@ tTrapz=zeros(ntimesteps,1);
 end % mm
 
 for podModeNumber=1:3
-phiVecAv(podModeNumber).m(mm).dat = eigVec(:,podModeNumber) + phiVecAv(mm).dat;
+phiVecAv(podModeNumber).circle(mm).dat = eigVec(:,podModeNumber) + phiVecAv(mm).dat;
 end % podMode
 end % cc
 
