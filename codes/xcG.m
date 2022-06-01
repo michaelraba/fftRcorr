@@ -1,18 +1,6 @@
 function xcorrGpu()
 clear all;
-maxJ = 7;
-maxI = 3;
-%qq=struct('t', repmat({struct('circle', repmat({  struct('dat',repmat({zeros(3,1079)}, Nps))}, Nts)) }, Ncs));
-qq=struct('t', repmat({zeros(1,7)}, [1,maxJ]));
 
-for i=1:7
-  a= zeros(maxJ,1) ;
-for j=1:maxJ
-  sprintf('%s','hi');
-  a(j) = j + maxJ*i;
-end
-qq(i).t= a';
-end
 [ntimesteps , rMin, rMax ,ss ,ncs ,plotOn ,azimuthalSet ,azimuthalSetSize ,printStatus ,lags, blocLength, saveDir,csSet,timeSet]=constants();
 
 %%

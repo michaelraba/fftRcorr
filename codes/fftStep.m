@@ -100,6 +100,8 @@ end % t (little)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 aMat = zeros(1079,1);
+%aMat = zeros(1079,1);
+
 for t=1:ntimesteps
 for c=1:ncs
 for m=1:azimuthalSetSize
