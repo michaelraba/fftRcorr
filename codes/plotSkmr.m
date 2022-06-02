@@ -17,11 +17,11 @@ if isGraph=="graph"
       subplot(3,1,c);
 
       %for t=1:ntimesteps
-      for m=1:18
+      for m=2:18
       
       labelStr = ['(m,k)=(', num2str(azimuthalSet(m)),',',num2str(c),')'];
       %pp=plot(A,real(plotObject(c).circle(m).dat )/ntimesteps,"DisplayName",labelStr);
-      pp=plot(real(plotObject(c).circle(m).dat )/ntimesteps,"DisplayName",labelStr);
+      pp=plot(real(plotObject(c).circle(m).dat(1:540)/ntimesteps ),"DisplayName",labelStr);
 
 
           tiSt=['$\Big\langle\Phi^{(' num2str(c ) ')}_{x}(m;r)\Big\rangle_k$'];
@@ -67,12 +67,12 @@ elseif isGraph=="graphPause"
       pause(1)
 %else
 %yy=csSet(2);
-kStr= [', $k \in [1,$' num2str(2) '$,\ldots,$' num2str(ncs)  '].'];
-
-aziStr= [') , $m\in [1,$' num2str(azimuthalSet(2)) '$,\ldots,$' num2str(azimuthalSet(azimuthalSetSize)) ']'];
-  titleStrr=['Classic POD modes $\Big\langle\Phi_{x}(m;r)\Big\rangle_k$ for (tTot,xTot)=('  aziStr  kStr]
-  sgtitle(titleStrr,'FontName','capitana','FontSize',12,'interpreter','latex')
-
+kStr= [', $k \in [1,$' num2str(csSet(2)) '$,\ldots,$' num2str(csSet(ncs))  '] (k-modes are averaged).'];
+tStr= [ ', $t\in[1,' num2str(timeSet(2)) ',' num2str(timeSet(3)) ',' num2str(timeSet(4)) ',\ldots,' num2str(timeSet(ntimesteps))  ']$' ]
+aziStr= [' , $m\in [1,$' num2str(azimuthalSet(2)) '$,\ldots,$' num2str(azimuthalSet(azimuthalSetSize)) ']'];
+titleStrr=['Classic POD modes $\Big\langle\Phi_{x}(m;r)\Big\rangle_k$ '   tStr kStr]
+sgtitle(titleStrr,'FontName','capitana','FontSize',12,'interpreter','latex')
+ 
 
 
 %% graph timeAvg
@@ -82,6 +82,7 @@ elseif isGraph=="timeAvg"
   cMaxx=3
   %A=linspace(0,1,540)
   A=linspace(0,1,1079)
+  maxT = 1;
   xlabel('radius $\frac{r}{R}$','interpreter','latex')
   ylabel("$S_{ii}(k,m;r,r')$",'interpreter','latex')  
   %xlabel('radius r');
@@ -89,7 +90,7 @@ elseif isGraph=="timeAvg"
   %figure;
   hold on;
   cou = 1
-  for c=1:ncs
+  for c=1:1
       subplot(1,2,c);
       %for t=1:ntimesteps
       for m=1:18
@@ -97,7 +98,7 @@ elseif isGraph=="timeAvg"
       %pp=plot(A,real(plotObject(c).circle(m).dat((end-1)/2:end) )/ntimesteps,"DisplayName",labelStr);
       %pp=plot(A,real(plotObject(c).circle(m).dat )/ntimesteps,"DisplayName",labelStr);
       %pp=plot(A,real(plotObject.circle(m).dat )/ntimesteps,"DisplayName",labelStr);
-      pp=plot(real(plotObject(c).circle(m).dat )/ntimesteps,"DisplayName",labelStr);
+      pp=plot(real(plotObject(c).circle(m).dat(1:540) )/ntimesteps,"DisplayName",labelStr);
 
           tiSt=["$R(m;k;r,r')$ Correlation With fft-x and time-averaging"];
           title(tiSt, 'FontName','capitana','FontSize',12,'interpreter','latex')
@@ -110,14 +111,14 @@ elseif isGraph=="timeAvg"
 
 
 subplot(1,2,2);
-      for t=1:ntimesteps
+      for t=1:maxT
       
       for m=1:18
       labelStr = ['(m,k)=(', num2str(azimuthalSet(m)),',',num2str(c),')'];
       %pp=plot(A,real(plotObject(c).circle(m).dat )/ntimesteps,"DisplayName",labelStr);
-      plot(real(array2(t).circle(m).dat(end/2:end) ),"DisplayName",labelStr);
+      plot(real(array2(t).circle(m).dat(540:end) ),"DisplayName",labelStr);
       %xcorrDone(9).circle(18).dat  
-          tiSt=["$R(m;x;r,r')$ Correlation without fft-x"];
+          tiSt=["$R(m;x;r,r')$ Correlation without fft-x; shows a particular snapshot t=1."];
           title(tiSt, 'FontName','capitana','FontSize',12,'interpreter','latex')
       if c==1      
       legend();
