@@ -249,9 +249,10 @@ else
 
     % stretch this by root-radial amount
 
+    rMat=0:dr:.50001;
     for ii = 1:length(x)
-      x(ii) = x(ii) * sqrt(ii);
-      y(ii) = y(ii) * sqrt(ii);
+      x(ii) = x(ii) * sqrt(rMat(ii));
+      y(ii) = y(ii) * sqrt(rMat(ii));
     end % for
     X = fft(x,m2,1);
     Y = fft(y,m2,1);
