@@ -89,7 +89,7 @@ elseif isGraph=="timeAvg"
   %figure;
   hold on;
   cou = 1
-  for c=1:1
+  for c=1:ncs
       subplot(1,2,c);
       %for t=1:ntimesteps
       for m=1:18
