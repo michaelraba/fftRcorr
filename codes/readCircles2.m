@@ -11,6 +11,7 @@ function [myPreFft_noCsYet]=readCircles2(t,c) % redo for parfor loop.
       tt = sprintf( '%04d', t  ) ;
       daPath = '/mnt/interest/rawPipeRe5600/';
       fileName = [ daPath 'snap_cs_' num2str(cc) '_ts_' num2str(tt) '.dat']; % t starts at 0.
+      sprintf('%s%s', 'file opening path is:',fileName)
       formatSpec = '%f';
       a=fopen(fileName, 'r');
       importedData = fscanf(a,formatSpec);

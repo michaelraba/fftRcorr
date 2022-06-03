@@ -2,8 +2,8 @@
 function [ntimesteps, rMin, rMax, ss, ncs, plotOn, azimuthalSet ,azimuthalSetSize ,printStatus ,lags, blocLength, saveDir,csSet,timeSet]=constants();
 % [ntimesteps, rMin, rMax, ss, ncs, plotOn, azimuthalSet ,azimuthalSetSize ,printStatus ,lags, blocLength]=constants();
 
-timeSet=1:10:500;
-csSet=1:1:3;
+timeSet=1:1:1;
+csSet=1:1:99;
 %timeSet=1:2:600;
 ntimesteps = size(timeSet) ;ntimesteps= ntimesteps(2);
 csSize = size(csSet); 
