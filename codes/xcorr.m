@@ -1,5 +1,5 @@
 function [c,lags] = xcorr(x,varargin)
-sprintf('%s','hi')
+%sprintf('%s','hi')
 %XCORR Cross-correlation function estimates.
 %   C = XCORR(A,B), where A and B are length M vectors (M>1), returns
 %   the length 2*M-1 cross-correlation sequence C. If A and B are of
