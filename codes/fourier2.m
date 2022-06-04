@@ -49,24 +49,15 @@ for n=1:lngth
     Sij_inv(n)=sumSij;
 end
 %%%%%%%%%%%%%%%%%%%%%%%%
+hold off;
 subplot(1,2,1)
-%plot(0:108,temp_hat,0:108,Sij)
 hold on;
 plot(1:mSize,temp_hat,1:mSize,Sij)
-
 title('tempHat ()')
-%figure(2)
 subplot(1,2,2)
-
-%plot(t,Sij_inv,t,temp,t,temp_inv)
 hold on;
-% plot(t,Sij_inv) % blu 1 has larger amplitudes than 2,3
-% plot(t,temp,'b.') % 2 and 3 matching
-% plot(t,temp_inv,'r--') % 
-
-plot(Sij_inv) % blu 1 has larger amplitudes than 2,3
-plot(temp,'b.') % 2 and 3 matching
-plot(temp_inv,'r--') % 
+plot(real(temp),'b.') % 2 and 3 matching
+plot(real(temp_inv),'o--') % 
 
 title('plots of (1) SijInv, (2) tempInv.. and (3) temp ')
 sprintf('%s','p')
