@@ -1,4 +1,4 @@
-function [structPost]=fourier(t,c,structPre)     
+function [structPost]=fourier(structPre)     
           %deltaTheta = 1.32841328413    % 360/271
           deltaTheta = 1/271;
         % calculates the fourier Series

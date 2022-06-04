@@ -16,28 +16,32 @@ elseif aliasStr=="alias"
 % Note: need to adjust aa= name etc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 for timeBloc = 1:blocLength% time
-    parfor t = 1:ntimesteps % time % parfor
+    for t = 1:ntimesteps % time % parfor
         %for  r = 1:1079 % 1079 because of xcorr has 2x-1 entries..
-        for  r = 1:540
-            vec = zeros(1080,1);
-            vec2 = zeros(1080,1);
-            for zz=1:1080 % there are currently 1080 azimuthal modes.
-                  % need to get data from fluctuation from qminusqbar, take fft azimuthally, then save to ....
-                  %aa = qMinusQbar_noCsYet(t).circle(m).dat(r,1);
-            % old aa=xcorrDone(t).circle(zz).dat(r); % this can perhaps be truncated to 540, then duplicated for the second half, too prevent aliasing.!
-            aa=qMinusQbar_noCsYet(t).circle(zz).dat(r,1); % this can perhaps be truncated to 540, then duplicated for the second half, too prevent aliasing.!
-            vec(zz)= aa;
-            end % for zz
-            aa=fft(vec);
-            bb = flip(aa);
-            cc = zeros(1080,1);
-            for i=1:540
-              cc(i) =aa(i);
-              cc(1080 - i + 1 ) = aa(i); % get all 1080
-            end % i
-            postAzimuthFft_noCsYet(t).circle(1,r).dat=cc;
-        end % r...
-    end % parfor t
+      for  rr = 1:540
+
+        aziSet=1:5:540;
+        mSize = size(aziSet) ;  mSize=mSize(2) ;
+            vec = zeros(mSize,1);
+            mCounter = 1;
+            for mm=aziSet
+            aa=qMinusQbar_noCsYet(t).circle(mm).dat(rr,1); % this can perhaps be truncated to 540, then duplicated for the second half, too prevent aliasing.!
+            sprintf('%s','p')
+            vec(mCounter)= aa;
+            mCounter = mCounter+1;
+            end % for mm
+            result = fourier(vec);
+               end % r
+        end % time
+    end % timeBloc
+
+
+
+
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
