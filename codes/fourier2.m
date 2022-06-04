@@ -9,9 +9,9 @@ t=0:dtheta/355:1;
 
 
 %%%%%%%%%%%%%%forward transform.....fft
-tic
+%tic
 temp_hat=fft(temp)*dtheta/180*pi;
-toc
+%toc
 %%%%%%%%%%%%inverse transform.....fft
 temp_inv=ifft(temp_hat)/dtheta*180/pi;
 %%%%%%%%%%%%%
@@ -20,7 +20,7 @@ temp_inv=ifft(temp_hat)/dtheta*180/pi;
 %lngth=length(t);
 lngth=mSize;
 deg=0;
-tic
+%tic
 for m=0:lngth-1
     sumSij=0;
     for n=1:lngth
@@ -32,7 +32,7 @@ for m=0:lngth-1
 end % for m 
 
 resultVec = Sij;
-toc
+%toc
 %%%%%%%%%%%%inverse transform.....dft
 for n=1:lngth
     sumSij=0;
