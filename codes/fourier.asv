@@ -1,4 +1,4 @@
-function [structPost]=fourier(t,c,structPre)     
+function [structPost]=fourier(structPre)     
           %deltaTheta = 1.32841328413    % 360/271
           deltaTheta = 1/271;
         % calculates the fourier Series
@@ -11,7 +11,7 @@ function [structPost]=fourier(t,c,structPre)
 
         for mm = 1:271*2
         %for r=1:1079 % pre has this form
-          a = structPre(m).dat ; % load S(r,r'; k,m) init memory for all r
+          a = structPre(c).t(t).azimuthal(m).dat ; % load S(r,r'; k,m) init memory for all r
  
 
         b = zeros(1,1079);
