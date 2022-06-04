@@ -68,7 +68,7 @@ elseif isGraph=="graphPause"
 %else
 %yy=csSet(2);
 kStr= [', $k \in [1,$' num2str(csSet(2)) '$,\ldots,$' num2str(csSet(ncs))  '] (k-modes are averaged).'];
-tStr= [ ', $t\in[1,' num2str(timeSet(2)) ',' num2str(timeSet(3)) ',' num2str(timeSet(4)) ',\ldots,' num2str(timeSet(ntimesteps))  ']$' ]
+tStr= [ ', $t\in[1,' num2str(timeSet(2)) ',' num2str(timeSet(3)) ',' num2str(timeSet(4)) ',\ldots,' num2str(timeSet(ntimesteps))  ',...,999]$' ]
 aziStr= [' , $m\in [1,$' num2str(azimuthalSet(2)) '$,\ldots,$' num2str(azimuthalSet(azimuthalSetSize)) ']'];
 titleStrr=['Classic POD modes $\Big\langle\Phi_{x}(m;r)\Big\rangle_k$ '   tStr kStr]
 sgtitle(titleStrr,'FontName','capitana','FontSize',12,'interpreter','latex')
