@@ -19,7 +19,6 @@ for timeBloc = 1:blocLength% time
     for t = 1:ntimesteps % time % parfor
         %for  r = 1:1079 % 1079 because of xcorr has 2x-1 entries..
       for  rr = 1:540
-
         aziSet=1:5:540;
         mSize = size(aziSet) ;  mSize=mSize(2) ;
             vec = zeros(mSize,1);
@@ -30,7 +29,7 @@ for timeBloc = 1:blocLength% time
             vec(mCounter)= aa;
             mCounter = mCounter+1;
             end % for mm
-            result = fourier(vec,aziSet,mSize);
+            result = fourier2(vec,aziSet,mSize);
                end % r
         end % time
     end % timeBloc
