@@ -30,7 +30,7 @@ for timeBloc = 1:blocLength% time
             vec(mCounter)= aa;
             mCounter = mCounter+1;
             end % for mm
-            result = fourier(vec);
+            result = fourier(vec,aziSet,mSize);
                end % r
         end % time
     end % timeBloc
