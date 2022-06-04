@@ -25,7 +25,7 @@ for timeBloc = 1:blocLength% time
             mCounter = 1;
             for mm=aziSet
             aa=qMinusQbar_noCsYet(t).circle(mm).dat(rr,1); % this can perhaps be truncated to 540, then duplicated for the second half, too prevent aliasing.!
-            sprintf('%s','p')
+            %sprintf('%s','p')
             vec(mCounter)= aa;
             mCounter = mCounter+1;
             end % for mm
