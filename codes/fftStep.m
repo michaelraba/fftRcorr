@@ -47,7 +47,7 @@ if stepStr=="readDataAndFindVeloFluctuation"
     qq = qMinusQbar_noCsYet(t);
     end % timeblock
 
-    [xcorrDone]=findAzimuthalModes3(t,c, qMinusQbar_noCsYet,xcorrDone,"alias")
+    [xcorrDone]=fourierCorr(t,c, qMinusQbar_noCsYet,xcorrDone,"alias")
     sprintf('%s','start azimuthal')
     qq = xcorrDone;
 
