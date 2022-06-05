@@ -36,13 +36,6 @@ for timeBloc = 1:blocLength% time
 
 
 
-
-
-
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 % Load in the correct qMinusqBar..
@@ -53,7 +46,7 @@ for timeBloc = 1:blocLength% time
 %$%$   % Temporarily /comment out...:/ <- re-enabled.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear qMinusQbar_noCsYet; % yes, clear this..
-%$%$    for timeBloc = 1:blocLength% time % disable; already declared above in fftAzimuth
+   for timeBloc = 1:blocLength% time % disable; already declared above in fftAzimuth
         saveStr=[saveDir 'qMinusQbar[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
         load(saveStr,'qMinusQbar_noCsYet');
     ordStr="xcorrNow";
@@ -70,11 +63,12 @@ clear qMinusQbar_noCsYet; % yes, clear this..
                 end % m
         end % (little)t
 
+
   saveStr=[saveDir 'xcorrDone[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
    save(saveStr,'xcorrDone','-v7.3');
+   end % timebloc
 
-
-end % timeBloc % end timebloc here .. (updated order..)
+end % if alias
 
 %qq = postAzimuthFft_noCsYet; % asign qq and exi
 
