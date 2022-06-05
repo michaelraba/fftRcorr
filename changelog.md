@@ -2,6 +2,13 @@
 
 # Changes <span class="timestamp-wrapper"><span class="timestamp">&lt;2022-06-05 Sun&gt;</span></span>
 
+its weird going from geometrical to the $u(0)=u(R)=0$ one.
+The only change i made was to change that the
+timeBloc was being saved (in fftCode after fft-x).
+
+-   previously was saving prematurely and not opening ..
+    -   needs checking then (?)
+
 
 ## fft(theta)->rcorr-> fft(x)
 
