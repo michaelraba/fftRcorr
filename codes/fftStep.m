@@ -58,7 +58,7 @@ if stepStr=="readDataAndFindVeloFluctuation"
 % read in one of the saved xcorrDone
 for timeBloc=1:blocLength
 for currentCrossSec=1:ncs
-saveStr=[saveDir '/xcorrDone[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
+saveStr=[saveDir 'xcorrDone[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
 qq=open(saveStr);
 sprintf('%s','start azimuthal')
 % now re-organize:
