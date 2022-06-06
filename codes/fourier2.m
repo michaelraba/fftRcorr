@@ -49,18 +49,18 @@ for n=1:lngth
     Sij_inv(n)=sumSij;
 end
 %%%%%%%%%%%%%%%%%%%%%%%%
-% hold off;
-% subplot(1,2,1)
-% hold on;
-% plot(1:mSize,temp_hat,1:mSize,Sij)
-% title('tempHat ()')
-% subplot(1,2,2)
-% hold on;
-% plot(real(temp),'b.') % 2 and 3 matching
-% plot(real(temp_inv),'o--') % 
-% 
-% title('plots of (1) SijInv, (2) tempInv.. and (3) temp ')
-% sprintf('%s','p')
-%resultVec = temp; %temp is the reconstruct. dont return that.
-%reSultVec = Sij;  % this is the coefficients. 
+hold off;
+subplot(1,2,1)
+hold on;
+plot(1:mSize,temp_hat,1:mSize,Sij)
+title('tempHat ()')
+subplot(1,2,2)
+hold on;
+plot(real(temp),'b.') % 2 and 3 matching
+plot(real(temp_inv),'o--') % 
+
+title('plots of (1) SijInv, (2) tempInv.. and (3) temp ')
+sprintf('%s','p')
+resultVec = temp; %temp is the reconstruct. dont return that.
+reSultVec = Sij;  % this is the coefficients. 
 end % f
