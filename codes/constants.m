@@ -17,7 +17,7 @@ ncs = csSize(2);
 plotOn=0;
 rMin = 0;
 rMax = 1080;
-blocLength= 23;
+blocLength= 1;
 %blocLength= 3;
 
 %ntimesteps =4; % also the number of workers assigned. % 

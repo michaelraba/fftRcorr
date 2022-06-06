@@ -10,7 +10,7 @@ if genStr=="G" ||  genStr=="g"
   sprintf('%s%s%s%s%s%s%s%s','**************',newline,'Generating to file C',num2str(ncs),'t',num2str(ntimesteps),newline,'**************'   )
 emptyStr=[];
 %[qMinusQbar]= fftStep("readDataAndFindVeloFluctuation",emptyStr);
-[qMinusQbar]= fftStep("readDataAndFindVeloFluctuation",emptyStr);
+[qMinusQbar]= fftStepNoXcorr("readDataAndFindVeloFluctuation",emptyStr);
 
 sprintf('%s','Saving velocity fluctuations into file...')
 saveStr=['/mnt/archLv/mike/podData/structSave/qMinusQbar_CaseC' num2str(ncs) 't' num2str(ntimesteps) '.mat'       ];
