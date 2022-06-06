@@ -127,7 +127,7 @@ end % t (little)
 end % timeBloc
         saveStr=[saveDir '/avgTimeEnd[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(c) '.mat'];
         save(saveStr,'avgTimeEnd','-v7.3');
-podClassic();
+podClassicNoXcorr();
 qq = xdirPostFft;
         
 end % f
