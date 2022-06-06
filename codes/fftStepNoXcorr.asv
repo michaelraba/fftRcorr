@@ -46,8 +46,9 @@ if stepStr=="readDataAndFindVeloFluctuation"
 
     qq = qMinusQbar_noCsYet(t);
     end % timeblock
+    [xcorrDone]=FAM3noX(t,c, qMinusQbar_noCsYet,xcorrDone,"alias")
 
-    [xcorrDone]=fourierCorrNoXcorr(t,c, qMinusQbar_noCsYet,xcorrDone,"alias")
+    %[xcorrDone]=findAzimuthalModes3(t,c, qMinusQbar_noCsYet,xcorrDone,"alias")
     sprintf('%s','start azimuthal')
     qq = xcorrDone;
     end %c % yes, cross-section loop should indeed end here..
@@ -57,8 +58,10 @@ if stepStr=="readDataAndFindVeloFluctuation"
 for timeBloc=1:blocLength
 for currentCrossSec=1:ncs
 saveStr=[saveDir 'xcorrDone[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
-qq=open(saveStr);
+q=open(saveStr);
+
 sprintf('%s','start azimuthal')
+% qq.postAzimuthFft_noCsYet(3).circle  
 % now re-organize:
 parfor t=1:ntimesteps
 %for r=1:1079

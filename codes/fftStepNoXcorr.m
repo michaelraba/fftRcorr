@@ -59,14 +59,19 @@ for timeBloc=1:blocLength
 for currentCrossSec=1:ncs
 saveStr=[saveDir 'xcorrDone[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
 qq=open(saveStr);
+xcorrDone = qq.postAzimuthFft_noCsYet;
+
 sprintf('%s','start azimuthal')
+% qq.postAzimuthFft_noCsYet(3).circle  
 % now re-organize:
-parfor t=1:ntimesteps
+for t=1:ntimesteps % parfor
 %for r=1:1079
 r_ct = 1;
-for r=540:1079
+for r=1:540 % radial.
 for m=1:azimuthalSetSize
-  aa=qq.xcorrDone(t).circle(m).dat(r,1);
+  %aa=qq.xcorrDone(t).circle(m).dat(r,1);
+  aa=xcorrDone(t).circle(r).dat(m,1); % this is the non-xcorr one.
+
   xdirNew(t).RadialCircle(r_ct).azimuth(m).dat(currentCrossSec,1) = aa;
 end % m
 r_ct = r_ct + 1;
@@ -75,7 +80,7 @@ end % t (little)
 sprintf('%s%d%s%d%s','done filling in a crosssec for timeBloc=', timeBloc, ' and t=',t,'.')
 end % c
 % begin fft x-dir
-parfor t=1:ntimesteps
+for t=1:ntimesteps %parfor
 %for r=1:1079
 for r=1:539
     for m=1:azimuthalSetSize

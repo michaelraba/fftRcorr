@@ -5,16 +5,7 @@ function [qq]=FAM3noX(currentTime, currentCrossSec, qMinusQbar_noCsYet,xcorrDone
 
   [postAzimuthFft_noCsYet]=initData2("postAzimuthFft_noCsYet");
 
-if aliasStr=="noAlias"
-elseif aliasStr=="alias"
     % do fft for the first half of the circle, then copy the result ot the other half.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-% begin azimuthal -> NEW and Needs a little changing (came after xcorr)
-% Note: need to adjust aa= name etc.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 for timeBloc = 1:blocLength% time
     parfor t = 1:ntimesteps % time % parfor
         %for  r = 1:1079 % 1079 because of xcorr has 2x-1 entries..
@@ -39,7 +30,6 @@ for timeBloc = 1:blocLength% time
         end % r...
     end % parfor t
 %clear qMinusQbar_noCsYet; % yes, clear this..
-
         saveStr=[saveDir 'xcorrDone[Case]C' num2str(ncs) 'T' num2str(ntimesteps) '[crossSec]' num2str(currentCrossSec) '[TimeBloc]' num2str(timeBloc) '.mat'       ];
         save(saveStr,'postAzimuthFft_noCsYet','-v7.3');
 %        load(saveStr,'qMinusQbar_noCsYet');
