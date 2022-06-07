@@ -2,11 +2,11 @@
 function [ntimesteps, rMin, rMax, ss, ncs, plotOn, azimuthalSet ,azimuthalSetSize ,printStatus ,lags, blocLength, saveDir,csSet,timeSet]=constants();
 % [ntimesteps, rMin, rMax, ss, ncs, plotOn, azimuthalSet ,azimuthalSetSize ,printStatus ,lags, blocLength]=constants();
 
-timeSet=1:1:30;
+timeSet=1:1:76;
 %timeSet=1:1:3;
 
-csSet=1:1:3;
-%csSet=1:90:90;
+%csSet=1:1:3;
+csSet=1:8:99;
 
 %timeSet=1:2:600;
 ntimesteps = size(timeSet) ;ntimesteps= ntimesteps(2);
@@ -17,7 +17,7 @@ ncs = csSize(2);
 plotOn=0;
 rMin = 0;
 rMax = 1080;
-blocLength= 1;
+blocLength= 13;
 %blocLength= 3;
 
 %ntimesteps =4; % also the number of workers assigned. % 
